@@ -18,5 +18,5 @@ type User struct {
 	gorm.Model
 	FirstName string `json:"first_name"`
 	LastName  string `json:"last_name"`
-	Role      `json:"role"`
+	Role      Role   `json:"role"`
 }
