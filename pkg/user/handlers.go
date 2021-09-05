@@ -12,7 +12,7 @@ func createUserHandler(s UserService) func(w http.ResponseWriter, r *http.Reques
 			http.Error(w, err.Error(), 500)
 			return
 		}
-		createdUser, err := s.CreateUser(&newUser)
+		createdUser, err := s.Create(&newUser)
 		if err != nil {
 			http.Error(w, err.Error(), 500)
 			return
