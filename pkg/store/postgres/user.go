@@ -14,7 +14,9 @@ type UserStore struct {
 func NewUserStore() *UserStore {
 	var o sync.Once
 	o.Do(func() {
-		gdb.AutoMigrate(&user.User{})
+		if err := gdb.AutoMigrate(&user.User{}); err != nil {
+			panic(err)
+		}
 	})
 	return &UserStore{
 		db: gdb,
