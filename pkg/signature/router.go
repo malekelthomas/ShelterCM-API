@@ -6,6 +6,6 @@ import (
 
 func SignatureRoutes(s SignatureService) *chi.Mux {
 	router := chi.NewRouter()
-	router.Post("/create", createSignatureHandler(s))
+	router.Post("/", createSignatureHandler(s))
 	return router
 }
