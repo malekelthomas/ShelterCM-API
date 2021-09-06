@@ -18,13 +18,25 @@ type DB struct {
 	Name     string `env:"DB_NAME,required "`
 }
 
+type AWS struct {
+	SignatureBucket       string `env:"SIGNATURE_BUCKET,required"`
+	SignatureBucketRegion string `env:"SIGNATURE_BUCKET_REGION,required"`
+	AccessKey             string `env:"AWS_ACCESS_KEY,required"`
+	SecretKey             string `env:"AWS_SECRET_ACCESS_KEY, required"`
+}
+
 func (d DB) GetDSN() string {
-	return fmt.Sprintf("user=%s password=%s dbname=%s port=%s sslmode=disable", d.User, d.Password, d.Name, d.Port)
+	return fmt.Sprintf("user=%s password=%s dbname=%s port=%s sslmode=disable",
+		d.User,
+		d.Password,
+		d.Name,
+		d.Port)
 }
 
 type App struct {
 	Server Server
 	DB
+	AWS
 }
 
 var Config App
