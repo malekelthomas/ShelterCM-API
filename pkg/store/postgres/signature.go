@@ -50,7 +50,7 @@ func (ss *SignatureStore) Create(signature *signature.Signature) (*signature.Sig
 	}
 	signature.Source = s3res.Location
 
-	result := ss.db.Create(&signature)
+	result := ss.db.Create(signature)
 	if result.Error != nil {
 		return nil, result.Error
 	}

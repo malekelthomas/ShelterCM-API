@@ -24,7 +24,7 @@ func NewUserStore() *UserStore {
 }
 
 func (us *UserStore) Create(user *user.User) (*user.User, error) {
-	result := us.db.Create(&user)
+	result := us.db.Create(user)
 	if result.Error != nil {
 		return nil, result.Error
 	}
